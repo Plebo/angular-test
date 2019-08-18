@@ -1,0 +1,18 @@
+thead {
+    background: darkblue;
+    color: white;
+}
+
+th {
+    text-align: center
+}
+
+.json {
+    text-align: left
+}
+
+.botonTabla {
+    background: transparent;
+    color: darkblue;
+    border: 0px;
+}

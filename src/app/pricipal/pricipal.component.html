@@ -1,0 +1,98 @@
+<div class="container">
+    <div *ngIf="!formulario">
+        <br>
+        <h2 style="text-align: center">Peliculas</h2>
+        <div class="row" style="text-align: center">
+            <div class="col-sm-6">
+                <br>
+                <h4>Tabla</h4>
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Calificación</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                            <th>Ver</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pelicula of peliculas">
+                            <td>{{pelicula.id}}</td>
+                            <td>{{pelicula.nombre}}</td>
+                            <td>{{pelicula.calificacion}}</td>
+                            <td>
+                                <button class="glyphicon glyphicon-pencil botonTabla" (click)="editar(pelicula.id)"></button>
+                            </td>
+                            <td>
+                                <button class="glyphicon glyphicon-trash botonTabla" (click)="eliminar(pelicula.id)"></button>
+                            </td>
+
+                            <td>
+                                <button class="glyphicon glyphicon-eye-open botonTabla" (click)="ver(pelicula.id)"></button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <h4>JSONs</h4>
+                <div *ngFor="let pelicula of peliculas">
+                    <label>id:{{pelicula.id}}</label>
+                    <br>
+                    <label>nombre:{{pelicula.nombre}}</label>
+                    <br>
+                    <label>calificacion:{{pelicula.calificacion}}</label>
+                    <br>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div style="text-align: center">
+            <button class="btn nueva" (click)="nuevaPelicula()">Nueva pelicula</button>
+        </div>
+    </div>
+
+
+    <div *ngIf="formulario">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <br>
+            <form [formGroup]="formPelicula">
+                <h4 style="text-align: center">Nueva Pelicula</h4>
+                <div class="form-group">
+                    <label for="usr">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Calificacion:</label>
+                    <input type="number" class="form-control" formControlName="calificacion">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Link de imagen:</label>
+                    <input type="text" class="form-control" formControlName="link">
+                </div>
+
+                <div style="text-align: center" *ngIf="!put">
+                    <button class="btn nueva" (click)="aceptar()">Aceptar</button>
+                </div>
+                <div style="text-align: center" *ngIf="put">
+                    <button class="btn nueva" (click)="modificar()">Aceptar</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+
+
+
+</div>
